@@ -1,9 +1,29 @@
 import { Box, Button, Grid, TextField } from '@material-ui/core'
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
 
 import { Employee } from '../../interfaces/Employee'
-import { CREATE_EMPLOYEE } from '../../redux/actionTypes'
+import { createEmployee, editEmployee } from '../../redux/actions'
+import { RootState } from '../../redux/reducers/rootReducer'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -29,20 +49,31 @@ const EMPTY_FORM = {
  */
 export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
   const dispatch = useDispatch()
-
+  const { pathname } = useLocation()
+  const history = useHistory()
+  const { id } = useParams<{id:string}>()
+  const empl = useSelector((state: RootState) => id ? state.employees.empls[id] : undefined)
   const [formState, setFormState] = useState<Employee>(EMPTY_FORM)
 
   function onFormSubmit () {
-    console.log(formState)
-    dispatch({ type: CREATE_EMPLOYEE, payload: formState })
-    setFormState(EMPTY_FORM)
+    if (pathname === '/create') { dispatch(createEmployee(formState)) } else {
+      console.log('edit esle', formState)
+      dispatch(editEmployee(formState))
+    }
+    history.push('/list')
   }
+
+  useEffect(() => {
+    if (empl) { setFormState(empl) }
+  }, [empl])
+
 
   return (
         <Box margin={10} justifyContent={'center'}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
+                value={formState.name}
                 required
                 id="outlined-required"
                 label="Nome"
@@ -52,6 +83,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
           </Grid>
           <Grid item xs={6}>
             <TextField
+                value={formState.cpf}
                 required
                 id="outlined-required"
                 label="Cpf"
@@ -61,6 +93,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
           </Grid>
           <Grid item xs={6}>
             <TextField
+                value={formState.salary}
                 required
                 id="outlined-required"
                 label="Salário bruto"
@@ -71,6 +104,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
 
           <Grid item xs={6}>
               <TextField
+                value={formState.discount}
                 required
                 id="outlined-required"
                 label="Desconto da previdência"
@@ -81,6 +115,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
           </Grid>
           <Grid item xs={6}>
             <TextField
+              value={formState.dependents}
               required
               id="outlined-required"
               label="Número de dependentes"
@@ -99,7 +134,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
             color="primary"
             onClick={onFormSubmit}
             >
-              Criar
+              Salvar
             </Button>
           </Grid>
       </Box>
