@@ -8,30 +8,6 @@ import { createEmployee, editEmployee } from '../../redux/actions'
 import { RootState } from '../../redux/reducers/rootReducer'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 interface ISaveEmployeeFormProps {
   initialValues?: Employee
 }
@@ -73,6 +49,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
+            fullWidth
                 value={formState.name}
                 required
                 id="outlined-required"
@@ -83,6 +60,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
           </Grid>
           <Grid item xs={6}>
             <TextField
+            fullWidth
                 value={formState.cpf}
                 required
                 id="outlined-required"
@@ -93,6 +71,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
           </Grid>
           <Grid item xs={6}>
             <TextField
+            fullWidth
                 value={formState.salary}
                 required
                 id="outlined-required"
@@ -104,6 +83,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
 
           <Grid item xs={6}>
               <TextField
+              fullWidth
                 value={formState.discount}
                 required
                 id="outlined-required"
@@ -115,6 +95,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
           </Grid>
           <Grid item xs={6}>
             <TextField
+            fullWidth
               value={formState.dependents}
               required
               id="outlined-required"
@@ -128,7 +109,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
             />
           </Grid>
         </Grid>
-        <Grid item xs={12} spacing={3}>
+        <Box marginTop={5} paddingBottom={5}>
             <Button
             variant="contained"
             color="primary"
@@ -136,7 +117,7 @@ export function SaveEmployeeForm (props: ISaveEmployeeFormProps) {
             >
               Salvar
             </Button>
-          </Grid>
+          </Box>
       </Box>
   )
 }

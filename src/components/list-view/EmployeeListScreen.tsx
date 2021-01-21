@@ -4,8 +4,6 @@ import React from 'react'
 import { EmployeesList } from './EmployeesList'
 
 
-
-
 interface IEmployeeListProps {}
 
 /**
@@ -15,11 +13,11 @@ export function EmployeeListScreen (props: IEmployeeListProps) {
   return (
     <Container style={{ marginTop: '20px', padding: '10px' }}>
         <Paper>
-        <Container style={{ marginTop: '20px', padding: '10px' }}>
+        <Container style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Typography variant="h4" gutterBottom>
                Seus funcionários
             </Typography>
-            </Container>
+        </Container>
         <EmployeesList/>
         </Paper>
     </Container>)

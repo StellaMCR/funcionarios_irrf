@@ -1,8 +1,7 @@
-import { Container, Paper } from '@material-ui/core'
+import { Container, Paper, Typography } from '@material-ui/core'
 import React from 'react'
 
 import { SaveEmployeeForm } from './SaveEmployeeForm'
-
 
 
 /**
@@ -15,6 +14,11 @@ export default function SaveEmployeeScreen () {
   return (
       <Container style={{ marginTop: '20px', padding: '10px' }}>
         <Paper>
+        <Container style={{ width: '100%', paddingTop: '10px', display: 'flex', justifyContent: 'center' }}>
+            <Typography variant="h4" gutterBottom>
+               Dados do funcionário
+            </Typography>
+        </Container>
           <SaveEmployeeForm/>
         </Paper>
       </Container>
