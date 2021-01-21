@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@material-ui/core';
 import React from 'react'
-import './App.css';
 import { theme } from '../config/Theme';
 import { TopMenu } from './TopMenu';
 import { Routes } from '../config/Routes';

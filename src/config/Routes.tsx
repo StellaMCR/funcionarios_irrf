@@ -4,8 +4,8 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import SaveEmployeeScreen from "../crud-employee/SaveEmployeeScreen";
-import { EmployeeListScreen } from "../list-view/EmployeeListScreen";
+import SaveEmployeeScreen from "../components/crud-employee/SaveEmployeeScreen";
+import { EmployeeListScreen } from "../components/list-view/EmployeeListScreen";
 
 export function Routes() {
   return (

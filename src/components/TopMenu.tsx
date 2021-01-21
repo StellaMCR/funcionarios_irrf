@@ -1,4 +1,4 @@
-import { AppBar, Avatar, Box, Container, Tab, Tabs, Toolbar } from '@material-ui/core'
+import { AppBar, Avatar, Box, Tab, Tabs} from '@material-ui/core'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
@@ -7,7 +7,7 @@ interface IHeaderProps {}
 
 export function TopMenu(props: IHeaderProps): JSX.Element {
     
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState(1)
     const history = useHistory()
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {

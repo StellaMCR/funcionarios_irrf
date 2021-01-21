@@ -1,5 +1,7 @@
+import { Box, Container, Grid, Paper, TextField } from '@material-ui/core';
 import React from 'react'
 import { useParams } from 'react-router-dom';
+import { SaveEmployeeForm } from './SaveEmployeeForm';
 
 /**
  * Tela para criar ou editar um funcionário
@@ -13,8 +15,12 @@ import { useParams } from 'react-router-dom';
 
 
     return (
-      <div>
+      <Container style={{marginTop: '20px', padding: '10px'}}>
+        <Paper>
+          <SaveEmployeeForm/>
           {employeeId.id}
-      </div>
+        </Paper>
+      </Container>
+
     );
-}
+  }
