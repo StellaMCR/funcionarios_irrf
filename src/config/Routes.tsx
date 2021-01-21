@@ -1,13 +1,10 @@
-import React from "react";
-import {
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
-import SaveEmployeeScreen from "../components/crud-employee/SaveEmployeeScreen";
-import { EmployeeListScreen } from "../components/list-view/EmployeeListScreen";
+import React from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
-export function Routes() {
+import SaveEmployeeScreen from '../components/crud-employee/SaveEmployeeScreen'
+import { EmployeeListScreen } from '../components/list-view/EmployeeListScreen'
+
+export function Routes () {
   return (
         <Switch>
           <Route path="/list">
@@ -26,5 +23,5 @@ export function Routes() {
             <Redirect to={'/list'}/>
           </Route>
         </Switch>
-  );
+  )
 }

@@ -1,24 +1,25 @@
-import { AppBar, Avatar, Box, Tab, Tabs} from '@material-ui/core'
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { AppBar, Avatar, Box, Tab, Tabs } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 
-interface IHeaderProps {}
+export function TopMenu () {
+  const [value, setValue] = useState('LIST')
+  const history = useHistory()
+  const { pathname } = useLocation()
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+    setValue(newValue)
+  }
+
+  useEffect(() => {
+    if (pathname === '/list') { setValue('LIST') } else setValue('REGISTER')
+  }, [pathname])
 
 
-export function TopMenu(props: IHeaderProps): JSX.Element {
-    
-    const [value, setValue] = useState(1)
-    const history = useHistory()
+  return (
 
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-        console.log(newValue, 'newValue')
-        setValue(newValue)
-      }
+    <AppBar position={'static'} style={{ alignItems: 'center' }} >
 
-    return (
-    
-    <AppBar position={'static'} style={{alignItems: 'center'}} >
-        
         <Box margin={'15px'}>
         <Avatar alt='logo' src={`${process.env.PUBLIC_URL}/LogoCircle.png`}/>
         </Box>
@@ -30,16 +31,18 @@ export function TopMenu(props: IHeaderProps): JSX.Element {
         centered
         >
             <Tab
+            value={'REGISTER'}
             component="a"
-            onClick={() => history.push('/create')} 
+            onClick={() => history.push('/create')}
             label={'Registrar funcionário'}/>
             <Tab
+            value={'LIST'}
             component="a"
             onClick={() => history.push('/list')}
             label={'Tabelas e cálculos do IRRF'}/>
-        
+
         </Tabs>
     </AppBar>
 
-        )
+  )
 }
